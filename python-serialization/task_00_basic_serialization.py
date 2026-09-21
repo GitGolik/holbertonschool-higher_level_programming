@@ -1,15 +1,28 @@
 import json
 
 
-def serialization_and_save_to_file(data, filename):
-    """serialize a python dir in json and save it in file"""
+def serialize_and_save_to_file(data, filename):
+    """
+    Serialize a Python dictionary to JSON and save it to the specified file.
 
-    with open(filename, "w" encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+    Args:
+        data (dict): Python dictionary to serialize.
+        filename (str): Path to the output JSON file.
+    """
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump(data, f)
 
 
 def load_and_deserialize(filename):
-    """load json file and deserialize a python dir"""
+    """
+    Load a JSON file and deserialize it into a Python dictionary.
 
+    Args:
+        filename (str): Path to the input JSON file.
+
+    Returns:
+        dict: Python dictionary with deserialized data.
+    """
     with open(filename, "r", encoding="utf-8") as f:
         return json.load(f)
+
