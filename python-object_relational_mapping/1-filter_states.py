@@ -16,13 +16,14 @@ if __name__ == "__main__":
 
     cursor = connection.cursor()
     cursor.execute(
-        "SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC",
+        "SELECT * FROM states "
+        "WHERE BINARY name LIKE %s "
+        "ORDER BY id ASC",
         ("N%",)
     )
 
-    rows = cursor.fetchall()
-    for row in rows:
-        print(row)
+    for state in cursor.fetchall():
+        print(state)
 
     cursor.close()
     connection.close()
