@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-"""list states whose name starts with an uppercase N"""
+"""List states whose name starts with an uppercase N."""
 
 import MySQLdb
 import sys
 
+
 if __name__ == "__main__":
-    db = MySQLdb.connect(
+    connection = MySQLdb.connect(
         host="localhost",
         port=3306,
         user=sys.argv[1],
@@ -13,13 +14,15 @@ if __name__ == "__main__":
         db=sys.argv[3]
     )
 
-    cursor = db.cursor()
+    cursor = connection.cursor()
     cursor.execute(
-        "SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC", ("N%",)
+        "SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC",
+        ("N%",)
     )
 
-for state in cursor.fetchall():
-    print(state)
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
 
-cursor.close()
-db.close()
+    cursor.close()
+    connection.close()
