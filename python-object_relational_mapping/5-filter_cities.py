@@ -1,4 +1,4 @@
-#!/usr/bin/pythpon3
+#!/usr/bin/python3
 """list all cities belonging to a given state"""
 
 import MySQLdb
