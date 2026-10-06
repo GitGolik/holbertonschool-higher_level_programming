@@ -1,15 +1,16 @@
 #!/usr/bin/python3
-"""define the state model mapped to the states table"""
-
+"""Define the State model mapped to the states table."""
 
 from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
+
 
 Base = declarative_base()
 
 
 class State(Base):
-    """Represent a state stored in the states table"""
+    """Represent a state stored in the states table."""
 
     __tablename__ = "states"
 
@@ -23,3 +24,4 @@ class State(Base):
         String(128),
         nullable=False
     )
+    cities = relationship("City", backref="state")
