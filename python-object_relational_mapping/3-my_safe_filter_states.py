@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-"""safely list states matching a user-provided name"""
+"""Safely list states matching a user-provided name."""
 
 import MySQLdb
 import sys
+
 
 if __name__ == "__main__":
     connection = MySQLdb.connect(
@@ -14,7 +15,12 @@ if __name__ == "__main__":
     )
 
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM states WHERE BINARY name = %s ORDER BY id ASC", (sys.argv[4],))
+    query = (
+        "SELECT * FROM states "
+        "WHERE BINARY name = %s "
+        "ORDER BY id ASC"
+    )
+    cursor.execute(query, (sys.argv[4],))
 
     for state in cursor.fetchall():
         print(state)
