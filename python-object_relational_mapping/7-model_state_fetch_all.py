@@ -1,4 +1,4 @@
-#!/usr/bind/python3
+#!/usr/bin/python3
 """list all state objects from a mysql database"""
 
 
