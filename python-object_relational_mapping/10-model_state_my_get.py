@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""get a state by name from a mysql database"""
-
+"""Get a state by name from a MySQL database."""
 
 import sys
 
@@ -28,7 +27,7 @@ if __name__ == "__main__":
     ).first()
 
     if state is None:
-        print("Not Found")
+        print("Not found")
     else:
         print(state.id)
 
