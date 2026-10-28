@@ -14,7 +14,14 @@ def items():
     with open("items.json", "r", encoding="utf-8") as json_file:
         data = json.load(json_file)
 
-    return render_template("items.html", items=data["items"])
+    if isinstance(data, dict):
+        items_list = data.get("items", [])
+    elif isinstance(data, list):
+        items_list = data
+    else:
+        items_list = []
+
+    return render_template("items.html", items=items_list)
 
 
 if __name__ == "__main__":
